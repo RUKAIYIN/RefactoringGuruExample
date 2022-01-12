@@ -4,9 +4,10 @@ import refactoring_guru.factory_method.example.buttons.Button;
 import refactoring_guru.factory_method.example.buttons.WindowsButton;
 
 /**
- * EN: Windows Dialog will produce Windows buttons.
- *
- * RU: Диалог на элементах операционной системы.
+ * Step 4
+ *  Create a set of creator subclasses for each type of product listed in the factory method.
+ *  Override the factory method in the subclasses and extract the appropriate bits of
+ *  construction code from the base method.
  */
 public class WindowsDialog extends Dialog {
 
