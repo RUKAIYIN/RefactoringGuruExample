@@ -2,13 +2,11 @@ package refactoring_guru.abstract_factory.example;
 
 import refactoring_guru.abstract_factory.example.app.Application;
 import refactoring_guru.abstract_factory.example.factories.GUIFactory;
-import refactoring_guru.abstract_factory.example.factories.MacOSFactory;
-import refactoring_guru.abstract_factory.example.factories.WindowsFactory;
+import refactoring_guru.abstract_factory.example.factories.MacGUIFactory;
+import refactoring_guru.abstract_factory.example.factories.WinGUIFactory;
 
 /**
  * EN: Demo class. Everything comes together here.
- *
- * RU: Демо-класс. Здесь всё сводится воедино.
  */
 public class Demo {
 
@@ -16,22 +14,16 @@ public class Demo {
      * EN: Application picks the factory type and creates it in run time
      * (usually at initialization stage), depending on the configuration or
      * environment variables.
-     *
-     * RU: Приложение выбирает тип и создаёт конкретные фабрики динамически
-     * исходя из конфигурации или окружения.
      */
     private static Application configureApplication() {
-        Application app;
         GUIFactory factory;
         String osName = System.getProperty("os.name").toLowerCase();
         if (osName.contains("mac")) {
-            factory = new MacOSFactory();
-            app = new Application(factory);
+            factory = new MacGUIFactory();
         } else {
-            factory = new WindowsFactory();
-            app = new Application(factory);
+            factory = new WinGUIFactory();
         }
-        return app;
+        return new Application(factory);
     }
 
     public static void main(String[] args) {
